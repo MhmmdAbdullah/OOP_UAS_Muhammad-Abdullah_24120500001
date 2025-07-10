@@ -1,41 +1,62 @@
-# FC Cakrawala Muda - Factory Method Implementation in C++
+# FC Cakrawala Muda - Penerapan Factory Method Pattern dalam C++
 
-Proyek ini adalah simulasi berbasis C++ dari struktur organisasi tim sepak bola **FC Cakrawala Muda**, sebuah klub binaan Universitas Cakrawala yang memiliki tim U-23. Program ini dirancang menggunakan **Object-Oriented Programming (OOP)** dan menerapkan **Factory Method Pattern**.
+## 📌 Deskripsi Umum
 
-## 🧠 Tujuan
-- Menerapkan konsep inheritance, polymorphism, dan abstract class di C++.
-- Menggunakan pola desain **Factory Method** untuk menciptakan objek `Coach`, `Player`, dan `Staff`.
-- Memberikan antarmuka input sederhana yang memungkinkan pengguna menambahkan data tim secara interaktif.
+Proyek ini merupakan simulasi program C++ berbasis Object-Oriented Programming (OOP) untuk manajemen tim sepak bola **FC Cakrawala Muda**, klub binaan Universitas Cakrawala untuk kelompok umur U-23.
+
+Program ini:
+1. Mengimplementasikan hubungan antar kelas sesuai dengan **desain OOP** dan **UML Class Diagram**.
+2. Menerapkan **pola desain Factory Method** untuk pembuatan objek dinamis (`Coach`, `Player`, `Staff`).
+3. Mempunyai sistem input/output interaktif untuk menambah dan menampilkan anggota tim.
 
 ---
 
-## 🏗️ Struktur Kelas
+## ✅ Soal 1 – Implementasi Kode Sesuai Deskripsi FC Cakrawala
 
-### 1. Abstract Class: `Person`
-Mewakili entitas umum dalam tim (Coach, Player, Staff).  
-Berisi atribut:
-- `name` : string
-- `age` : int  
-Dan method virtual:
-- `displayRole()` (pure virtual)
+### Struktur Tim:
+- 1 orang **Head Coach**
+- 1 orang **Assistant Coach**
+- 15 orang **Player**
+- (opsional) beberapa **Staff** pendukung
 
-### 2. Subclass:
-- `Coach` (punya atribut `license`)
-- `Player` (punya atribut `number`, `position`)
-- `Staff` (punya atribut `role`)
+Program ini memungkinkan user untuk menginput data secara dinamis sesuai struktur tersebut, dan menampilkannya kembali.
 
-### 3. Factory Pattern:
-- Interface: `PersonFactory`  
-- Concrete Factories:
+---
+
+## ✅ Soal 2 – Perbaikan UML dengan Pola Factory Method
+
+Diagram UML telah diperbaiki agar sesuai dengan **Factory Method Pattern**, dengan komponen utama sebagai berikut:
+
+### 📦 Class Hierarchy:
+- `Person` *(abstract class)* ➝ base class untuk semua peran
+- Subclass:
+  - `Coach`
+  - `Player`
+  - `Staff`
+
+### 🏭 Factory Classes:
+- Interface: `PersonFactory` *(abstract factory)*
+- Implementasi:
   - `CoachFactory`
   - `PlayerFactory`
-  - `StaffFactory`  
-Setiap factory bertugas membuat instance dari subclass `Person` yang sesuai.
+  - `StaffFactory`
+
+Setiap factory bertanggung jawab menciptakan objek turunannya masing-masing dengan menyembunyikan proses instansiasi dari pengguna (decoupled creation).
+
+Diagram UML dapat dilihat di folder `uml_diagram.png`.
 
 ---
 
-## 🚀 Cara Menjalankan
+## ✅ Soal 3 – Revisi Kode agar Sesuai dengan UML Factory Method
 
-### ✅ Compile dengan G++
+Program utama (`main.cpp`) telah diperbarui agar sesuai dengan diagram UML dan menerapkan **Factory Method Pattern** dengan benar.
+
+Struktur class dan dependency-nya telah mengikuti relasi inheritance dan interface seperti yang ditampilkan dalam diagram UML.
+
+---
+
+## 🔧 Cara Menjalankan Program
+
+### Compile (C++14 atau lebih tinggi):
 ```bash
-g++ -std=c++14 -o fc_cakrawala main.cpp
+g++ -std=c++14 -o fc_cakrawala fc_cakrawala_factory_method.cpp
